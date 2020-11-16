@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -43,5 +42,22 @@ public class Key : MonoBehaviour
     public void PlayKey()
     {
         AudioSource.PlayClipAtPoint(pianoSound, Camera.main.transform.position);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        Character character = other.GetComponent<Character>();
+        if (character)
+        {
+            if (!character.beingDragged && !character.keyToMoveTo)
+            {
+                character.MoveTowardsPlaceableArea(placeableArea, this);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        
     }
 }

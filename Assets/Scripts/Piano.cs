@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Piano : MonoBehaviour
 {
-    public Key c4;
+    
 }
